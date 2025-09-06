@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vignesh Babu Portfolio</title>
+    <link rel="icon" href="favicon.png">
+    <script src="https://kit.fontawesome.com/aa61d806c9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        :root {
+            --bg-primary: #000;
+            --bg-secondary: #111;
+            --text-primary: #fff;
+            --text-secondary: #ccc;
+            --accent-color: #00ffff;
+            --card-bg: #222;
+            --scroll-track: #000;
+            --scroll-thumb: #fff;
+        }
+
+        .light-mode {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #e0e0e0;
+            --text-primary: #333;
+            --text-secondary: #555;
+            --accent-color: #007bff;
+            --card-bg: #fff;
+            --scroll-track: #f1f1f1;
+            --scroll-thumb: #888;
+        }
+
+        /* Customize the scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--scroll-track);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--scroll-thumb);
+            border-radius: 10px;
+            border: 2px solid var(--scroll-track);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Raleway', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-primary);
+            padding: 10px 5%;
+            transition: background-color 0.3s;
+            border-bottom: 1px solid var(--text-secondary);
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .navbar-right .a-element {
+            color: var(--text-primary);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-right .a-element:hover {
+            color: var(--accent-color);
+            background-color: rgba(0, 183, 255, 0.1);
+        }
+
+        .logo-image {
+            height: 80px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent-color);
+            background-color: rgba(0, 183, 255, 0.1);
+        }
+
+        .pic {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5%;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .pic:hover {
+            filter: grayscale(0%);
+            transform: translateY(-5px);
+        }
+
+        .section {
+            padding: 60px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .Home {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            padding: 40px 5%;
+        }
+
+        .Home-left {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .Home-right {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .Home-h1 {
+            background: linear-gradient(to right, rgba(0, 168, 253, 1), #fff 35%, #e00a95);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s linear infinite;
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 75%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 70%; }
+        }
+
+        .Home-p {
+            font-family: "Encode Sans Expanded", sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .Home-p:hover {
+            color: var(--accent-color);
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #00c8c8;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 200, 200, 0.3);
+        }
+
+        .iitpic {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid var(--text-secondary);
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .paraabout {
+            color: var(--text-primary);
+            text-align: center;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+
+        .paraabout:hover {
+            color: var(--accent-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .internships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .internship-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .internship-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .internship-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background-color: #fff;
+            padding: 15px;
+        }
+
+        .internship-content {
+            padding: 20px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 183, 255, 0.1);
+        }
+
+        .skill-icon img {
+            max-width: 60%;
+            max-height: 60%;
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .skill-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--text-secondary);
+            border-radius: 8px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 183, 255, 0.2);
+        }
+
+        .social-icon {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .social-icon a {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--text-secondary);
+            margin-top: 50px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .Home-h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+            
+            .navbar-right {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .Home {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .Home-left, .Home-right {
+                padding: 20px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-right .a-element {
+                font-size: 16px;
+                padding: 6px 10px;
+            }
+            
+            .theme-toggle {
+                font-size: 20px;
+            }
+            
+            .Home-h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 40px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <img class="logo-image" src="OIP.jpg" alt="Logo">
+        </div>
+        <div class="navbar-right">
+            <a class="a-element" href="#home">Home</a>
+            <a class="a-element" href="#about">About</a>
+            <a class="a-element" href="#projects">Projects</a>
+            <a class="a-element" href="#internships">Internships</a>
+            <a class="a-element" href="#skills">Skills</a>
+            <a class="a-element" href="#contact">Contact</a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+    
+    <section class="Home" id="home">
+        <div class="Home-left">
+            <h1 class="Home-h1">Guthi.Vignesh Babu</h1>
+            <p class="Home-p">
+                I'm a highly motivated CSE (AI&ML) student at Dhanekula College in Vijayawada, India, with a strong interest in applying technology to solve real-world problems. I'm proficient in Python, web development, and Artificial Intelligence/Machine Learning, constantly seeking to expand my knowledge and skills in these areas.
+            </p>
+            <p class="Home-p">
+                <b><i>Technical Skills:</i></b><br>
+                Programming Languages: Python (libraries like NumPy, Pandas, TensorFlow)<br>
+                Web Development: HTML, CSS, JavaScript, React<br>
+                Artificial Intelligence & Machine Learning: Machine learning algorithms, deep learning concepts
+            </p>
+        
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+        <div class="Home-right">
+            <img class="pic" src="dp1.jpg" alt="Vignesh Babu">
+        </div>
+    </section>
+    
+    <section class="section" id="about">
+        <h2 class="section-title">My Data Science Journey</h2>
+        <div class="text-center">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap;">
+                <img class="iitpic" src="dp2.jpg" alt="IIT Hyderabad Visit" style="max-width:480px; height:300px; display:block;">
+                <img class="iitpic" src="cr3.jpg" alt="IIT Hyderabad Visit 2" style="max-width:380px; height:300px; display:block;">
+            </div>
+            <div style="height: 30px;"></div>
+            <div class="paraabout" style="text-align: left; max-width: 900px; margin: 0 auto 30px;">
+                <p>
+                    I had the privilege of attending a Data Science workshop at IIT Hyderabad, organized by Remark Skills. This experience was both enriching and rewarding, providing valuable insights into the field of data science.
+                </p>
+                <p>
+                    I am grateful to Remark Skills for this wonderful opportunity. During the workshop, I worked extensively with Python for data analysis, leveraging its robust libraries and functions to extract meaningful insights from data.
+                </p>
+                <p>
+                    Python’s versatility and ease of use make it an essential tool for anyone pursuing a career in data science.
+                </p>
+            </div>
+            <a href="VIGNESHBABURESUME.pdf" download="VIGNESH_RESUME.pdf" class="btn">
+                <i class="fa fa-download"></i> Download Resume
+            </a>
+        </div>
+    </section>
+    
+    <section class="section" id="projects">
+        <h2 class="section-title">PROJECTS</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img class="project-img" src="https://i.ytimg.com/vi/8gPONnGIPgw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLApk45tFx3H61Yy9vBlJ9OaCm3X7w" alt="Virtual Mouse">
+                <div class="project-content">
+                    <h3 class="project-title">Virtual Mouse</h3>
+                    <p class="project-desc">Control your cursor with hand gestures. AI-powered, touch-free navigation!</p>
+                    <a href="https://www.linkedin.com/posts/guthi-vignesh-babu-29b307289_gesturecontrol-innovation-tech-activity-7212118301567537153-UYD7?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEX9pNcBYvp9eF8KPGohuVCqduoJp7sE08U" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img class="project-img" src="https://media.licdn.com/dms/image/v2/D5612AQGlfhE9IBQ8Bg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1693596641359?e=2147483647&v=beta&t=r7Ul99DWE8fm-HxxyeCKqa8wBhK_V23EaZnq6hY1_wc" alt="AI Voicebot">
+                <div class="project-content">
+                    <h3 class="project-title">AI Voicebot</h3>
+                    <p class="project-desc">Speech-to-Speech AI Voice Bot. Talk, listen, and interact seamlessly. AI-powered voice recognition and response!</p>
+                    <a href="https://www.linkedin.com/posts/guthi-vignesh-babu-29b307289_aimersociety-ai-voicebot-activity-7204810687485800449-DrA_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEX9pNcBYvp9eF8KPGohuVCqduoJp7sE08U" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img class="project-img" src="cr2.jpg" alt="Websites Club">
+                <div class="project-content">
+                    <h3 class="project-title">Websites Club</h3>
+                    <p class="project-desc">DHAN FLY HIGH is a collage drone club integrated into our college website.</p>
+                    <a href="https://diet.ac.in/wp-content/uploads/DHAN%20FLY%20HIGH/index.html" class="btn">View Website</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img class="project-img" src="https://relaxifyapp.com/wordpress/wp-content/uploads/2021/11/Frame-18-3-1.png" alt="Face Emotion Recognition">
+                <div class="project-content">
+                    <h3 class="project-title">Face Emotion Recognition</h3>
+                    <p class="project-desc">It works for sentiment analysis and feedback!</p>
+                    <a href="https://www.linkedin.com/posts/guthi-vignesh-babu-29b307289_machinelearning-deeplearning-computervision-activity-7210100805503176704-97YV?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEX9pNcBYvp9eF8KPGohuVCqduoJp7sE08U" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img class="project-img" src="https://kotaielectronics.com/wp-content/uploads/2024/03/maxresdefault.jpg" alt="Object Detection">
+                <div class="project-content">
+                    <h3 class="project-title">Object Detection</h3>
+                    <p class="project-desc">Helmet Detection in Traffic. AI-powered system for road safety. Detects riders without helmets in real time!</p>
+                    <a href="https://www.linkedin.com/posts/guthi-vignesh-babu-29b307289_aimers-aimersociety-activity-7201578296084500481-czaN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEX9pNcBYvp9eF8KPGohuVCqduoJp7sE08U" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img class="project-img" src="https://cdn.prod.website-files.com/6344c9cef89d6f2270a38908/673f2a3b44c1ed4901bb43bb_6386328bea96dffacc89946b_d1.webp" alt="Portfolio">
+                <div class="project-content">
+                    <h3 class="project-title">Portfolio</h3>
+                    <p class="project-desc">Web Development projects using HTML, CSS, and JavaScript.</p>
+                    <a href="https://gvignesh.tech/" class="btn">View Website</a>
+                </div>
+            </div>
+
+             <div class="project-card">
+                <img class="project-img" src="code.jpg" alt="Portfolio">
+                <div class="project-content">
+                    <h3 class="project-title">CodeReview Pro</h3>
+                    <p class="project-desc"> Python Flask projects help to automate code reviews and improve code quality.</p>
+                    <a href="https://vignesh46.pythonanywhere.com/" class="btn">View Website</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img class="project-img" src="honey.png" alt="HoneyPot">
+                <div class="project-content">
+                    <h3 class="project-title">HoneyPot</h3>
+                    <p class="project-desc"> A web application designed to detect and analyze potential security threats.Along with notifications</p>
+                    <a href="https://vigneshguthi.pythonanywhere.com/" class="btn">View Website</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img class="project-img" src="neuronode.png" alt="HoneyPot">
+                <div class="project-content">
+                    <h3 class="project-title">NeuroNodes</h3>
+                    <p class="project-desc">Chat with all your apps in one place. NeuroNodes uses AI to connect your tools like Gmail, Notion, and Slack for infinite productivity.</p>
+                    <a href="https://code-spark-25.vercel.app/" class="btn">View Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="internships">
+        <h2 class="section-title">INTERNSHIPS</h2>
+        <p class="text-center mb-4">(click on the images to open the certificate)</p>
+        <div class="internships-grid">
+
+             <div class="internship-card">
+                <a href="https://drive.google.com/file/d/1TKqb-wINpay6LyRCpHEwil8EHG_70z2O/view">
+                    <img class="internship-img" src="https://lms.edubottechnologies.com/edubot_logo.svg" alt="edubot">
+                </a>
+                <div class="internship-content">
+                    <h3 class="project-title">EDUBOT</h3>
+                    <p class="project-desc">I worked on an internship project using Flask web app and Python to explore Large Language Models (LLMs). Developed web interfaces to interact with LLMs, gaining hands-on experience in deploying AI models and building user-friendly applications.</p>
+                </div>
+            </div>
+
+            <div class="internship-card">
+                <a href="https://drive.google.com/file/d/1FDZdXMRXWXJWHbZdzwRw5TsAHputT2LN/view?usp=sharing">
+                    <img class="internship-img" src="https://aimersociety.com/wp-content/uploads/2023/08/AIMER-Society.png" alt="AIMER Society">
+                </a>
+                <div class="internship-content">
+                    <h3 class="project-title">AIMER Society</h3>
+                    <p class="project-desc">I worked in Aimersociety as a Cybersecurity intern. Learned about SQL injections and using AI tools.</p>
+                </div>
+            </div>
+            
+            <div class="internship-card">
+                <a href="https://drive.google.com/file/d/1z2nf56fhtzEx7rL4ow702W5hKEefi-iZ/view?usp=sharing">
+                    <img class="internship-img" src="https://static.vecteezy.com/system/resources/previews/021/557/479/non_2x/blackbuck-logo-design-antelop-india-silhoutte-blackbuck-logo-design-template-free-vector.jpg" alt="BlackBuck">
+                </a>
+                <div class="internship-content">
+                    <h3 class="project-title">BLACKBUCK</h3>
+                    <p class="project-desc">I worked as Generative AI (Chat GPT) intern at BlackBuck. Learned prompt engineering.</p>
+                </div>
+            </div>
+            
+            <div class="internship-card">
+                <a href="https://drive.google.com/file/d/1w2EfzROPFLc8qkOtUTSjQW0h7Gjoo7Bm/view?usp=sharing">
+                    <img class="internship-img" src="https://th.bing.com/th/id/OIP.okOut4IpucB3-N530_8lUgAAAA?rs=1&pid=ImgDetMain" alt="Remark Skills">
+                </a>
+                <div class="internship-content">
+                    <h3 class="project-title">REMARK SKILLS</h3>
+                    <p class="project-desc">I have visited Hyderabad IIT for the workshop on Data Science.</p>
+                </div>
+            </div>
+            
+            <div class="internship-card">
+                <img class="internship-img" src="https://th.bing.com/th/id/OIP.oXfxG_t4FYA6IATpfmvWFwHaFj?w=232&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Dronacharya">
+                <div class="internship-content">
+                    <h3 class="project-title">DRONACHARYA</h3>
+                    <p class="project-desc">Working on drone integration and system integration.</p>
+                </div>
+            </div>
+            
+            <div class="internship-card">
+                <a href="https://drive.google.com/file/d/1Z5vn7OS-S4kGNRL615wOJllxYlCusAzI/view?usp=drive_link">
+                    <img class="internship-img" src="https://cdn.bio.link/uploads/profile_pictures/2023-09-01/CvvXPJ0wad0jrzb9G4alZo1npO96Sko2.png" alt="Coding Raja">
+                </a>
+                <div class="internship-content">
+                    <h3 class="project-title">CODING RAJA</h3>
+                    <p class="project-desc">Developing skills in Web Development. Worked on tasks like music player, resume builder.</p>
+                </div>
+            </div>
+            
+            <div class="internship-card">
+                <a href="https://drive.google.com/file/d/1G4KKILLPhio2jkL45OP4s5aZtHZcAgdb/view?usp=sharing">
+                    <img class="internship-img" src="https://i.ytimg.com/vi/UCWqRqp-G6w/maxresdefault.jpg" alt="Spoken Tutorial">
+                </a>
+                <div class="internship-content">
+                    <h3 class="project-title">SPOKEN TUTORIAL IIT BOMBAY</h3>
+                    <p class="project-desc">Completion of C language course.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="skills">
+        <h2 class="section-title">SKILLS</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <img src="OIP (1).jpg" alt="Web Development">
+                </div>
+                <h3 class="skill-title">Web Development</h3>
+                <p class="skill-desc">
+                    I bring websites to life with clean, semantic HTML that provides a solid structure for exceptional user experiences. I wield CSS like a maestro, crafting visually stunning and responsive interfaces that adapt seamlessly to any device.
+                </p>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <img src="5fd71b656c6ba-python-logo.webp" alt="Python">
+                </div>
+                <h3 class="skill-title">Python</h3>
+                <p class="skill-desc">
+                    Python is widely used in data analysis and visualization, with libraries like Pandas, NumPy, and Matplotlib being particularly useful. Frameworks such as Django and Flask are used for backend web development. You can use Python in software development for scripting, automation, and testing.
+                </p>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <img src="download.jpg" alt="AI & ML">
+                </div>
+                <h3 class="skill-title">AI & ML</h3>
+                <p class="skill-desc">
+                    AI is the broader concept of enabling a machine or system to sense, reason, act, or adapt like a human. ML is a subfield of AI that uses algorithms trained on data to produce adaptable models that can perform complex tasks.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <img src="https://www.arigs.com/wp-content/uploads/2025/01/The-Role-of-Embedded-Systems-in-Modern-IoT-Applications.jpg" alt="Embedded Systems & AI">
+                </div>
+                <h3 class="skill-title">Embedded Systems & AI</h3>
+                <p class="skill-desc">
+                    Experienced in integrating AI technologies with embedded systems such as NVIDIA Jetson and drones. Skilled in deploying machine learning models on edge devices for real-time applications like object detection, autonomous navigation, and IoT solutions.
+                </p>
+            </div>
+        <div class="touch-me-icons" style="text-align:center; margin-top:40px;"></div>
+    </section>
+    
+    <section class="section" id="linkedin-activity">
+        <h2 class="section-title">LINKEDIN ACTIVITY</h2>
+        <div class="text-center" style="margin-bottom: 40px;">
+            <p style="color: var(--text-secondary); margin-bottom: 25px;">
+            For my latest activities and daily updates, please visit my LinkedIn profile.
+            </p>
+            <a href="https://www.linkedin.com/in/guthi-vignesh-babu/" target="_blank" class="btn" style="font-size: 1.1rem; padding: 15px 30px;">
+            <i class="fa-brands fa-linkedin"></i> View on LinkedIn
+            </a>
+        </div>
+        </section>
+
+        <section class="section" id="contact">
+        <h2 class="section-title">CONTACT ME</h2>
+        <div class="contact-info text-center mb-5">
+            <p>G.VigeshBabu</p>
+            <p>vigneshguthi3212@gmail.com</p>
+        </div>
+        
+        <div class="contact-form-container">
+            <form action="https://formspree.io/f/mvggnbel" method="post" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+        
+        <div class="social-icon">
+            <a href="https://in.linkedin.com/in/guthi-vignesh-babu" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://www.instagram.com/guthivignesh.in/?igsh=MTUxNDE3MzVjbWpkMA%3D%3D#" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61559597260376" aria-label="Facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://github.com/Vigneshbabu4" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <p>&copy; 2023 Guthi Vignesh Babu. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
